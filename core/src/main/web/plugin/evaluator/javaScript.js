@@ -408,6 +408,10 @@ define(function(require, exports, module) {
         });
       }
     },
+    setCustomLib: function() {
+      console.log("SETTING CUSTOM LIB");
+      this.settings.libraries = _.unionBy(this.settings.libraries, [{name: "custom", latest: this.settings.customLibrary}], "latest");
+    },
     spec: {
       languageVersion: {
         type: "settableEnum",
@@ -415,9 +419,15 @@ define(function(require, exports, module) {
         values: _.mapValues(LANGUAGE_VERSIONS, function(version) {return version.name;})
       },
       libraries: {
+        name: "Libraries",
         type: "settableSelect",
         remote: "https://api.cdnjs.com/libraries",
         action: "loadAllLibraries"
+      },
+      customLibrary: {
+        name: "Add Remote Javascript",
+        type: "settableString",
+        action: "setCustomLib"
       }
     }
   };
