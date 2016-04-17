@@ -93,8 +93,11 @@ public class Main {
     opts.addOption(null, "public-server", false, "allow connections from external computers");
     opts.addOption(null, "no-password", false, "do not require a password from external connections " +
                    "(warning: for advanced users only!)");
+                   
+    // provide the following paths to use the --public-server option on Windows (otherwise it will try to issue UNIX commands)
     opts.addOption(null, "use-ssl-cert", true, "Enable SSL - requires path to cert file (both SSL options should be used)");
     opts.addOption(null, "use-ssl-key", true, "Enable SSL - requires path to key file (both SSL options should be used)");
+    
     opts.addOption(null, "require-password", false, "Ask for password when connecting");
     opts.addOption(null, "listen-interface", true, "Interface to listen on - requires ip address or '*'");
     opts.addOption(null, "portable", false, "Configuration and runtime files located in application instead of user home directory.");
